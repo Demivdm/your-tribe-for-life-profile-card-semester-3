@@ -3,4 +3,8 @@
 	export let data;
 </script>
 
-<h1>{data.page.data.example_title}</h1>
+<h1>{data.title}</h1>
+
+<pre>
+{JSON.stringify(data,null,2	)}
+</pre>
