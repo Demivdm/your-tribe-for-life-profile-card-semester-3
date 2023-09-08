@@ -4,6 +4,7 @@
 </script>
 
 <h1>{data.title}</h1>
+<img src="{data.img.url}">
 
 <pre>
 {JSON.stringify(data,null,2	)}

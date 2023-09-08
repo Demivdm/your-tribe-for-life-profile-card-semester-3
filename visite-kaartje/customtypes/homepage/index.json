@@ -19,6 +19,14 @@
           "label": "title",
           "placeholder": ""
         }
+      },
+      "img": {
+        "type": "Image",
+        "config": {
+          "label": "img",
+          "constraint": {},
+          "thumbnails": []
+        }
       }
     }
   }
