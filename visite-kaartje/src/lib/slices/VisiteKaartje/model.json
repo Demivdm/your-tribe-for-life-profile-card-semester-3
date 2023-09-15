@@ -1,0 +1,16 @@
+{
+  "id": "visite_kaartje",
+  "type": "SharedSlice",
+  "name": "VisiteKaartje",
+  "description": "VisiteKaartje",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": ""
+    }
+  ]
+}

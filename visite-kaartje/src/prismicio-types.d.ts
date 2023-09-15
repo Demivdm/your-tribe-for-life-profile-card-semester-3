@@ -4,6 +4,8 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type HomepageDocumentDataSlicesSlice = never;
+
 /**
  * Content for Homepage documents
  */
@@ -29,6 +31,39 @@ interface HomepageDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   img: prismic.ImageField<never>;
+
+  /**
+   * over field in *Homepage*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage.over
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  over: prismic.KeyTextField;
+
+  /**
+   * introduction field in *Homepage*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage.introduction
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  introduction: prismic.RichTextField;
+
+  /**
+   * Slice Zone field in *Homepage*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<HomepageDocumentDataSlicesSlice>;
 }
 
 /**
@@ -49,6 +84,36 @@ export type HomepageDocument<Lang extends string = string> =
 
 export type AllDocumentTypes = HomepageDocument;
 
+/**
+ * Default variation for VisiteKaartje Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type VisiteKaartjeSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *VisiteKaartje*
+ */
+type VisiteKaartjeSliceVariation = VisiteKaartjeSliceDefault;
+
+/**
+ * VisiteKaartje Shared Slice
+ *
+ * - **API ID**: `visite_kaartje`
+ * - **Description**: VisiteKaartje
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type VisiteKaartjeSlice = prismic.SharedSlice<
+  "visite_kaartje",
+  VisiteKaartjeSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -58,6 +123,14 @@ declare module "@prismicio/client" {
   }
 
   namespace Content {
-    export type { HomepageDocument, HomepageDocumentData, AllDocumentTypes };
+    export type {
+      HomepageDocument,
+      HomepageDocumentData,
+      HomepageDocumentDataSlicesSlice,
+      AllDocumentTypes,
+      VisiteKaartjeSlice,
+      VisiteKaartjeSliceVariation,
+      VisiteKaartjeSliceDefault,
+    };
   }
 }
